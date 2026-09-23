@@ -1222,6 +1222,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "dioxus-google-fonts"
+version = "0.1.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "412d17680b0b76c1042fdf70621a33384c297d3b2e417cd30962de9a87f90cb3"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.119",
+]
+
+[[package]]
 name = "dioxus-history"
 version = "0.7.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4486,6 +4497,7 @@ name = "sabigotchi"
 version = "0.1.0"
 dependencies = [
  "dioxus",
+ "dioxus-google-fonts",
 ]
 
 [[package]]
