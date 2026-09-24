@@ -4,30 +4,110 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
   background-color: #0a0a0a;
 }
 
 #main-box {
-  position: fixed;
-  inset: 0px;
-  margin: auto;
-  width: 600px;
-  height: 750px;
-  box-shadow: 0 0 14px #1b1b1b;
-}
-
-.box {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #101010;
+  background-color: #FCAB2F;
   border-radius: 1.5rem;
+  width: 1000px;
+  height: 600px;
+  box-shadow: 0 0 14px #1b1b1b;
 }
 
 .text {
-  color: #ffffff;
+  font-family: "Inter Tight", sans-serif;
   font-size: 24px;
-  font-family: "Inter Tight";
+  font-weight: normal;
+  font-style: normal;
+  color: #ffffff;
 }
 
+#main-title {
+  font-family: "Sawarabi Gothic", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  text-shadow: 0 0 5px #1b1b1b;
+}
+
+#main-title_color {
+  color: #993809;
+  text-shadow: 0 0 5px #6b2706;
+}
+
+#div_main-title {
+  position: fixed;
+  top: 7.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+#main-logo {
+  width: 50px;
+  height: 50px;
+  margin: 2px 5px 0 0;
+  filter: drop-shadow(0 0 5px #6b2706);
+}
+
+#credits {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 12px;
+}
+
+#screen {
+  flex: 6;
+  width: 100%;
+
+}
+
+#control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 2.25;
+  width: 100%;
+
+}
+
+.div_button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  margin: 8px 40px;
+  background-color: #E91C20;
+  border: 7px #B40601 solid;
+  border-radius: 50%;
+  outline: 13px #F89A05 solid;
+}
+
+.button-text {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 70px;
+  margin: 0;
+  font-weight: normal;
+  font-style: normal;
+  fill: #9A0601;
+}
