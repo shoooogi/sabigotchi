@@ -3,6 +3,7 @@ use dioxus_google_fonts::google_fonts;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
+const SATCHI_MASK: Asset = asset!("/assets/sabigotchi-mask.svg");
 
 fn main() {
     dioxus::launch(App);
@@ -30,15 +31,17 @@ fn App() -> Element {
 #[component]
 fn MainBox() -> Element {
     rsx! {
-        div { id: "main-box",
-            div { id: "screen", }
-            div { id: "control",
-                div { class: "div_button", 
-                    div { id: "choose", class: "button" }
-                    ArcText { text: "Choose" }
+        div { id: "main-box", class: "noisy",
+            img { id: "satchi-mask", src: SATCHI_MASK }
+            div { id: "div_screen",
+                div { id: "screen", class: "scanlines",
+                    // todo
                 }
-                div { id: "enter", class: "button", "Enter" }
-                div { id: "cancel", class: "button", "Cancel" }
+            }
+            div { id: "control",
+                Button { id: "choose", text: "Choose" }
+                Button { id: "enter", text: "Enter" }
+                Button { id: "cancel", text: "Cancel" }
             }
         }
     }
@@ -67,16 +70,26 @@ fn Credits() -> Element {
 }
 
 #[component]
+fn Button(id: String, text: String) -> Element {
+    rsx! {
+        div { class: "div_button",
+            div { id: id, class: "button noisy", div { id: "button-background", class: "noisy" } }
+            ArcText { text: text }
+        }
+    }
+}
+
+#[component]
 fn ArcText(text: String) -> Element {
     rsx! {
         svg {
-            view_box: "0 0 500 100",
+            view_box: "0 0 500 70",
             class: "w-full",
 
             defs {
                 path {
                     id: "curve",
-                    d: "M 50 20 Q 250 90 450 20",
+                    d: "M 50 20 Q 250 90 450 10",
                     fill: "none",
                 }
             }
