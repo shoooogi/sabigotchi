@@ -1,9 +1,12 @@
 use dioxus::prelude::*;
 use dioxus_google_fonts::google_fonts;
+use dioxus_sdk_time::{self, use_interval};
+use std::time::Duration;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 const SATCHI_MASK: Asset = asset!("/assets/sabigotchi-mask.svg");
+const SPRITE_SHEET: Asset = asset!("/assets/sasa.png");
 
 fn main() {
     dioxus::launch(App);
@@ -31,11 +34,12 @@ fn App() -> Element {
 #[component]
 fn MainBox() -> Element {
     rsx! {
-        div { id: "main-box", class: "noisy",
+        div { id: "main-box", class: "noisy", style: "--sprite-sheet: url({SPRITE_SHEET})",
             img { id: "satchi-mask", src: SATCHI_MASK }
             div { id: "div_screen",
                 div { id: "screen", class: "scanlines",
-                    // todo
+                    Sprite { anim: true, frame_index: 0, fps: 3, total_frames: 93 }
+                    // fazer sprite de fase ovo (feito), bebê/criança (fazer o bichinho ficar piquitucho), adolescente (feito), adulto (colocar gravata quando fazer), idoso, anjo
                 }
             }
             div { id: "control",
@@ -104,5 +108,22 @@ fn ArcText(text: String) -> Element {
                 }
             }
         }
+    }
+}
+
+#[component]
+fn Sprite(anim: bool, frame_index: u8, fps: u32, total_frames: u32) -> Element {
+    let mut auto_frame = use_signal(|| 0u32);
+
+    use_interval(Duration::from_millis(1000 / fps as u64), move |_| {
+        if anim {
+            auto_frame.set((auto_frame() + 1) % total_frames);
+        }
+    });
+
+    let frame = if anim { auto_frame() } else { frame_index as u32 };
+
+    rsx! {
+        div { class: "sprite", style: "--frame: {frame}" }
     }
 }
