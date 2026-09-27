@@ -38,8 +38,8 @@ fn MainBox() -> Element {
             img { id: "satchi-mask", src: SATCHI_MASK }
             div { id: "div_screen",
                 div { id: "screen", class: "scanlines",
-                    Sprite { anim: true, frame_index: 0, fps: 3, total_frames: 93 }
-                    // fazer sprite de fase ovo (feito), bebê/criança (fazer o bichinho ficar piquitucho), adolescente (feito), adulto (colocar gravata quando fazer), idoso, anjo
+                    Sprite { anim: true, frame_index: 0, fps: 3, total_frames: 247 }
+                    // fazer sprite de fase ovo (feito), bebê (feito), criança (feito), adolescente (feito), adulto (feito), idoso, anjo
                 }
             }
             div { id: "control",
