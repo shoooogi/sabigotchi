@@ -138,7 +138,7 @@ body {
 .sprite {
   display: block;
   background-image: var(--sprite-sheet);
-  background-position: 0 calc(-128px * var(--frame, 0));
+  background-position: calc(-256px * var(--col, 0)) calc(-128px * var(--row, 0));
   width: 256px;
   height: 128px;
   image-rendering: pixelated;

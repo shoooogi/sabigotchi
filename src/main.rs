@@ -38,7 +38,7 @@ fn MainBox() -> Element {
             img { id: "satchi-mask", src: SATCHI_MASK }
             div { id: "div_screen",
                 div { id: "screen", class: "scanlines",
-                    Sprite { anim: true, frame_index: 0, fps: 3, total_frames: 247 }
+                    Sprite { anim: true, frame_index: 0, fps: 3, total_frames: 395, cols: 15 }
                     // fazer sprite de fase ovo (feito), bebê (feito), criança (feito), adolescente (feito), adulto (feito), idoso, anjo
                 }
             }
@@ -112,7 +112,7 @@ fn ArcText(text: String) -> Element {
 }
 
 #[component]
-fn Sprite(anim: bool, frame_index: u8, fps: u32, total_frames: u32) -> Element {
+fn Sprite(anim: bool, frame_index: u8, fps: u32, total_frames: u32, cols: u32) -> Element {
     let mut auto_frame = use_signal(|| 0u32);
 
     use_interval(Duration::from_millis(1000 / fps as u64), move |_| {
@@ -123,7 +123,10 @@ fn Sprite(anim: bool, frame_index: u8, fps: u32, total_frames: u32) -> Element {
 
     let frame = if anim { auto_frame() } else { frame_index as u32 };
 
+    let col = frame % cols;
+    let row = frame / cols;
+
     rsx! {
-        div { class: "sprite", style: "--frame: {frame}" }
+        div { class: "sprite", style: "--col: {col}; --row: {row}" }
     }
 }
