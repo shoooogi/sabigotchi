@@ -6,7 +6,7 @@ use std::time::Duration;
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 const SATCHI_MASK: Asset = asset!("/assets/sabigotchi-mask.svg");
-const SPRITE_SHEET: Asset = asset!("/assets/sasa.png");
+const SPRITE_SHEET: Asset = asset!("/assets/sasa.png", AssetOptions::image().with_preload(true));
 
 fn main() {
     dioxus::launch(App);
@@ -38,8 +38,8 @@ fn MainBox() -> Element {
             img { id: "satchi-mask", src: SATCHI_MASK }
             div { id: "div_screen",
                 div { id: "screen", class: "scanlines",
-                    Sprite { anim: true, frame_index: 0, fps: 3, total_frames: 395, cols: 15 }
-                    // fazer sprite de fase ovo (feito), bebê (feito), criança (feito), adolescente (feito), adulto (feito), idoso, anjo
+                    Sprite { anim: false, frame_index: 0, fps: 3, total_frames: 458, cols: 17 }
+                    
                 }
             }
             div { id: "control",
@@ -112,7 +112,7 @@ fn ArcText(text: String) -> Element {
 }
 
 #[component]
-fn Sprite(anim: bool, frame_index: u8, fps: u32, total_frames: u32, cols: u32) -> Element {
+fn Sprite(anim: bool, frame_index: u16, fps: u32, total_frames: u32, cols: u32) -> Element {
     let mut auto_frame = use_signal(|| 0u32);
 
     use_interval(Duration::from_millis(1000 / fps as u64), move |_| {
