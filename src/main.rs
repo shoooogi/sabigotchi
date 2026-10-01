@@ -25,6 +25,7 @@ fn App() -> Element {
             ("Pixelify Sans", wght = ["400..700"]),
         ]) }
 
+        // trocar para um fundo diferente? como um quarto, com mãos segurando ou não o dispositivo
         MainTitle {}
         MainBox {}
         Credits {}

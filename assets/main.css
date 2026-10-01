@@ -116,6 +116,12 @@ body {
   background-color: #E91C20;
   box-shadow: 0 0 5px 5px #B40601 inset, 0 0 9px 2px #E8B4B2 inset;
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.button:active {
+  box-shadow: 0 0 7px 7px #900000 inset, 0 0 9px 2px #E8B4B2 inset;
+  transition: 65ms ease;
 }
 
 #satchi-mask {
