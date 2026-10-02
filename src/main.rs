@@ -7,6 +7,7 @@ const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 const SATCHI_MASK: Asset = asset!("/assets/sabigotchi-mask.svg");
 const SPRITE_SHEET: Asset = asset!("/assets/sasa.png", AssetOptions::image().with_preload(true));
+const BACKGROUND: Asset = asset!("/assets/background.png");
 
 fn main() {
     dioxus::launch(App);
@@ -24,8 +25,8 @@ fn App() -> Element {
             ("Sawarabi Gothic", wght = [400, 700, 800]),
             ("Pixelify Sans", wght = ["400..700"]),
         ]) }
-
-        // trocar para um fundo diferente? como um quarto, com mãos segurando ou não o dispositivo
+        
+        // trocar para um fundo diferente? como um quarto, com mãos (de cachorrinho) segurando o dispositivo
         MainTitle {}
         MainBox {}
         Credits {}
